@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 23/06/2021 11:46:31 PM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="modelo.Boleto" table="boleto" catalog="terminal" optimistic-lock="version">
+        <id name="id" type="java.lang.Integer">
+            <column name="id" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="autobus" class="modelo.Autobus" fetch="select">
+            <column name="id_autobus" not-null="true" />
+        </many-to-one>
+        <many-to-one name="pasajero" class="modelo.Pasajero" fetch="select">
+            <column name="id_pasajero" not-null="true" />
+        </many-to-one>
+        <property name="origen" type="string">
+            <column name="origen" length="100" not-null="true" />
+        </property>
+        <property name="destino" type="string">
+            <column name="destino" length="100" not-null="true" />
+        </property>
+        <property name="fechaSalida" type="string">
+            <column name="fechaSalida" length="100" not-null="true" />
+        </property>
+        <property name="precio" type="int">
+            <column name="precio" not-null="true" />
+        </property>
+    </class>
+</hibernate-mapping>
